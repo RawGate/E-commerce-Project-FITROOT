@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const isDevelopment = import.meta.env.MODE === 'development'
-let baseURL = 'http://localhost:5110/api/v1'
+let baseURL = 'http://localhost:5110/api'
 
 if (!isDevelopment) {
   baseURL = 'http://localhost:5110/api/v1'
@@ -18,7 +18,6 @@ const api = axios.create({
    if (error.response.status === 500) {
     throw new Error(error.response.data)
   }
-  }
- )
+  })
 
 export default api
