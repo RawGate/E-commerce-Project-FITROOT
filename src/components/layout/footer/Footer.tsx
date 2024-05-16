@@ -1,6 +1,8 @@
+// Footer.tsx
+
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faXTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faTwitter, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import styles from './footer.module.css';
 
@@ -11,15 +13,14 @@ const Footer = () => {
         <div className={styles.links}>
           <h3>Quick Links</h3>
           <ul>
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/contact">Contact Us</a></li>
-            <li><a href="/privacy">Privacy Policy</a></li>
-            <li><a href="/terms">Terms of Service</a></li>
+            <li>Contact Us</li>
+            <li>Privacy Policy</li>
+            <li>Terms of Service</li>
           </ul>
         </div>
         <div className={styles.socialMedia}>
           <h3>Follow Us</h3>
-          <a href="https://twitter.com/FitRoot360"><FontAwesomeIcon icon={faXTwitter}/></a>
+          <a href="https://twitter.com/FitRoot360"><FontAwesomeIcon icon={faXTwitter} /></a>
           <a href="https://www.instagram.com/fitroot360/?hl=en"><FontAwesomeIcon icon={faInstagram} /></a>
         </div>
         <div className={styles.newsletter}>

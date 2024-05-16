@@ -15,9 +15,29 @@
     padding-bottom: 20px;
 }
 
+.links {
+    color: lightgray;
+}
+
+.links h3 {
+    color: #FFEC9E;
+}
+
 .links ul {
     list-style-type: none;
     padding: 0;
+}
+
+.links li {
+    margin: 5px 0;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    
+}
+
+.links li:hover {
+    transform: scale(1.2);
+    color: white;
 }
 
 .links li,
@@ -32,11 +52,15 @@
 
 .socialMedia a {
     margin-right: 10px;
-  
+
 }
 
 .socialMedia h3 {
     color: #FFEC9E;
+}
+.socialMedia a:hover {
+    color: white;
+    
 }
 
 .newsletter form {
@@ -51,7 +75,6 @@
     transition: border-color 0.3s ease;
 }
 
-
 .newsletter button {
     padding: 8px 16px;
     background-color: #FFEC9E;
@@ -64,6 +87,7 @@
 
 .newsletter button:hover {
     background-color: #FFD700;
+    color: #fff;
 }
 
 .newsletter input:focus::placeholder {
@@ -84,8 +108,6 @@
     font-size: 0.75rem;
     margin-top: 10px;
 }
-
-
 @media (max-width: 480px) {
     .footerContent {
         flex-direction: column;

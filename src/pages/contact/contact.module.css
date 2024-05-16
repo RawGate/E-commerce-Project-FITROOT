@@ -3,19 +3,27 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 70vh;
     background-color: #ffffff;
     font-family: "Sedan SC", serif;
     font-weight: 500;
 }
 
 .contactDetails {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 20px;
 }
 
 .contactDetail {
-    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.contactDetail strong {
+    margin-right: 8px;
 }
 
 .contactBox {
@@ -28,8 +36,6 @@
 .contactContent {
     text-align: center;
 }
-
-
 
 .contactHeading {
     font-size: 2rem;
@@ -44,12 +50,6 @@
     animation: fadeInUp 1s ease;
 }
 
-.contactDetails {
-    text-align: left;
-    margin-bottom: 20px;
-    animation: fadeInLeft 1s ease;
-}
-
 .contactForm {
     display: flex;
     flex-direction: column;
@@ -62,6 +62,8 @@
     width: 100%;
     margin: 10px 0;
     padding: 8px;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
     transition: border-color 0.3s ease;
 }
 
@@ -83,6 +85,7 @@
     transform: scale(1.1);
 }
 
+/* Keyframes for animations */
 @keyframes fadeInDown {
     0% {
         opacity: 0;
@@ -131,10 +134,19 @@
     }
 }
 
+/* Media Queries for Responsive Design */
 
 @media (max-width: 480px) {
     .contactBox {
         width: 90%;
+    }
+
+    .contactHeading {
+        font-size: 1.5rem;
+    }
+
+    .contactDescription {
+        font-size: 1rem;
     }
 }
 

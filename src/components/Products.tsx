@@ -10,21 +10,20 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 
 const Products = () => {
     const { products, isLoading, error } = useSelector((state: RootState) => state.productR); 
-     console.log('Products:', products);
-    
-
+  
     const dispatch: AppDispatch = useDispatch();
 
     const [pageNumber, setPageNumber] = useState(1);
     const [pageSize, setPageSize] = useState(3);
+     const [filteringTerm, setFilteringTerm] = useState('');
 
     useEffect(() => {
         const fetchData = async()=> {
-            await dispatch(fetchProducts({pageNumber, pageSize}))
+            await dispatch(fetchProducts({pageNumber, pageSize, filteringTerm}))
         }
         fetchData();
        
-    }, [pageNumber])
+    }, [pageNumber, filteringTerm])
 
     const handleNextPage = () => {
         setPageNumber(currentPage => currentPage + 1)
@@ -34,12 +33,24 @@ const Products = () => {
         setPageNumber(currentPage => currentPage - 1)
 
     }
-     //console.log('Number of products:', products.length);
-  return (
-     <div className="product-list-container">
-      <h2>Products</h2>
-      {isLoading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
+    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFilteringTerm(e.target.value)
+
+    }
+
+    return (
+    <div className="product-list-container">
+
+      <h2 className="title">Products</h2>
+      
+      <div className="search-input">
+        <input 
+          type="text" 
+          placeholder="Search"
+          value={filteringTerm}
+          onChange={handleSearchChange} 
+        />  
+      </div>
       <section className="products">
         {products && products.length > 0 && 
           products.map((product) => (

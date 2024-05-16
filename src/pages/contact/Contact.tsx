@@ -21,7 +21,7 @@ export const Contact = () => {
           <h1 className={styles.contactHeading}>Contact Us</h1>
           <p className={styles.contactDescription}>If you have any questions or need assistance, please contact us using the form below:</p>
           <form className={styles.contactForm}>
-            <input type="text" placeholder="Your name" required className={styles.contactInput} />
+            <input type="text" placeholder="Your email" required className={styles.contactInput} />
             <textarea placeholder="Your message" required className={styles.contactTextarea}></textarea>
             <button type="submit" className={styles.contactButton}>Send Message</button>
           </form>
