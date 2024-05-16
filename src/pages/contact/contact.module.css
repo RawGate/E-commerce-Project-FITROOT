@@ -1,0 +1,160 @@
+.contactPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+    font-family: "Sedan SC", serif;
+    font-weight: 500;
+}
+
+.contactDetails {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contactDetail {
+    margin-bottom: 10px;
+}
+
+.contactBox {
+    width: 300px;
+    background-color: #e6e6e6;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.contactContent {
+    text-align: center;
+}
+
+
+
+.contactHeading {
+    font-size: 2rem;
+    color: #333;
+    animation: fadeInDown 1s ease;
+}
+
+.contactDescription {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 20px;
+    animation: fadeInUp 1s ease;
+}
+
+.contactDetails {
+    text-align: left;
+    margin-bottom: 20px;
+    animation: fadeInLeft 1s ease;
+}
+
+.contactForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeInRight 1s ease;
+}
+
+.contactInput,
+.contactTextarea {
+    width: 100%;
+    margin: 10px 0;
+    padding: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.contactInput:focus,
+.contactTextarea:focus {
+    border-color: #59ABE3;
+}
+
+.contactButton {
+    padding: 10px 20px;
+    background-color: #FFEC9E;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.contactButton:hover {
+    transform: scale(1.1);
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+@media (max-width: 480px) {
+    .contactBox {
+        width: 90%;
+    }
+}
+
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .contactBox {
+        width: 70%;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .contactBox {
+        width: 60%;
+    }
+}
+
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .contactBox {
+        width: 50%;
+    }
+}

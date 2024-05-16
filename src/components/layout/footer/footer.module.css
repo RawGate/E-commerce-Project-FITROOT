@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap');
+
+.footer {
+    background-color: #000;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-family: "Sedan SC", serif;
+    font-weight: 500;
+}
+
+.footerContent {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
+}
+
+.links ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.links li,
+.socialMedia a {
+    margin: 5px 0;
+    color: lightgray;
+}
+
+.links h3 {
+    color: #FFEC9E;
+}
+
+.socialMedia a {
+    margin-right: 10px;
+  
+}
+
+.socialMedia h3 {
+    color: #FFEC9E;
+}
+
+.newsletter form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.newsletter input {
+    padding: 8px;
+    border: 1px solid lightgray;
+    transition: border-color 0.3s ease;
+}
+
+
+.newsletter button {
+    padding: 8px 16px;
+    background-color: #FFEC9E;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    border-radius: 30%;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter button:hover {
+    background-color: #FFD700;
+}
+
+.newsletter input:focus::placeholder {
+    color: transparent;
+}
+
+.newsletter input:focus {
+    color: black;
+    outline: none;
+    border-color: #FFEC9E;
+}
+
+.newsletter h3 {
+    color: #FFEC9E;
+}
+
+.copyRight {
+    font-size: 0.75rem;
+    margin-top: 10px;
+}
+
+
+@media (max-width: 480px) {
+    .footerContent {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .socialMedia {
+        margin-top: 20px;
+     
+    }
+
+    .newsletter form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .newsletter input,
+    .newsletter button {
+        width: 80%;
+    }
+}
+
+
+@media (min-width: 481px) and (max-width: 1024px) {
+    .footerContent {
+        flex-wrap: wrap;
+    }
+
+    .links,
+    .socialMedia,
+    .newsletter {
+        flex-basis: 50%;
+    }
+}
