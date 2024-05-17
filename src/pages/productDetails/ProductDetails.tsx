@@ -27,26 +27,36 @@ const ProductDetails = () => {
     fetchData();
   }, [slug]);
 
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
+  if (!product) {
+    return <p>No product found.</p>;
+  }
+
   return (
-    <article className={styles['product-details']}>
-      <h2>Product Details</h2>
-      {isLoading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
-      {product && (
-        <div>
-          <img src={product.image} alt={product.name} className={styles['product-details__img']} />
-          <div className={styles['product_details__body']}>
-            <h3>{product.name}</h3>
-            <p>{product.description}</p>
-            <p>Price: ${product.price}</p>
-            <p>Stock: {product.stock}</p>
-            <p>Sold: {product.soldQuantity}</p>
-            <button className={styles['btn-add-to-cart']}>
-              <FontAwesomeIcon icon={faCartShopping} />
-            </button>
-          </div>
+    <article className={styles.productDetails}>
+      <div className={styles.productDetails__title}>
+        <h2>Product Details</h2>
         </div>
-      )}
+      <div className={styles.productDetails__container}>
+        <img src={product.image} alt={product.name} className={styles.productDetails__img} />
+        <div className={styles.productDetails__body}>
+          <h3>{product.name}</h3>
+          <p>{product.description}</p>
+          <p>Price: ${product.price}</p>
+          <p>Stock: {product.stock}</p>
+          <p>Sold: {product.soldQuantity}</p>
+          <button className={styles['btn-add-to-cart']}>
+            <FontAwesomeIcon icon={faCartShopping} />
+          </button>
+        </div>
+      </div>
     </article>
   );
 };

@@ -10,12 +10,12 @@ type ApiData = {
 
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
-  async ({ pageNumber, pageSize, filteringTerm }: { pageNumber: number; pageSize: number, filteringTerm: string }) => {
+  async ({ pageNumber, pageSize, filteringTerm, sortColumn}: { pageNumber: number; pageSize: number, filteringTerm: string,  sortColumn: string }) => {
     if (filteringTerm.length > 0){
 const response = await api.get<ApiData>(`/products?filteringTerm=${filteringTerm}&pageNumber=${pageNumber}&pageSize=${pageSize}`);
 return response.data;
 } else {
-const response = await api.get<ApiData>(`/products?pageNumber=${pageNumber}&pageSize=${pageSize}`);
+const response = await api.get<ApiData>(`/products?pageNumber=${pageNumber}&pageSize=${pageSize}&sortColumn=${sortColumn}`);
 return response.data;
 }}
 );

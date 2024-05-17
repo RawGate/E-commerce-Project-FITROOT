@@ -18,7 +18,6 @@ const SingleProduct = (props: { product: Product }) => {
       <div className='product__body'>
         <h2>{product.name}</h2>
         <p>Price: ${product.price}</p>
-        <p>Stock: {product.stock}</p>
         <div className="product__actions">
           <Link to={`/products/${product.slug}`} className="btn-details">
             <FontAwesomeIcon icon={faEye} />
