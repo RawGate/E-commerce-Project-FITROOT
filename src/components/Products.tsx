@@ -5,8 +5,6 @@ import { AppDispatch, RootState } from '@/tookit/store';
 import { fetchProducts } from '@/tookit/slices/ProductSlice';
 import { useDispatch } from 'react-redux';
 import '@/index.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 const Products = () => {
     const { products, isLoading, error } = useSelector((state: RootState) => state.productR); 
@@ -70,11 +68,9 @@ const Products = () => {
                 ))}
         </section>
         <div className='product-list-buttons'>
-            <button onClick={handlePreviousPage} disabled={pageNumber === 1}>
-                <FontAwesomeIcon icon={faChevronLeft} />
+            <button onClick={handlePreviousPage} disabled={pageNumber === 1}> ‹
             </button>
-            <button onClick={handleNextPage}>
-                <FontAwesomeIcon icon={faChevronRight} />
+            <button onClick={handleNextPage}> ›
             </button>
         </div>
     </div>
