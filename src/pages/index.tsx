@@ -1,3 +1,6 @@
 export {HomePage} from "./home/HomePage"
 export {Contact} from "./contact/Contact"
 export {Error} from "./error/Error"
+import {ProductDetails} from "./productDetails/ProductDetails"
+export {Register} from "./register/Register"
+export { Login } from "./login/Login"

@@ -6,8 +6,9 @@ import { AppDispatch, RootState } from '@/tookit/store';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './productdetails.module.css';
+import PagesTitle from '@/components/PagesTitle';
 
-const ProductDetails = () => {
+export const ProductDetails = () => {
   const { slug } = useParams<{ slug?: string }>();
   const { product, isLoading, error } = useSelector((state: RootState) => state.productR);
   const dispatch: AppDispatch = useDispatch();
@@ -42,6 +43,7 @@ const ProductDetails = () => {
   return (
     <article className={styles.productDetails}>
       <div className={styles.productDetails__title}>
+        <PagesTitle title="Product Details" />
         <h2>Product Details</h2>
         </div>
       <div className={styles.productDetails__container}>
@@ -61,4 +63,3 @@ const ProductDetails = () => {
   );
 };
 
-export default ProductDetails;

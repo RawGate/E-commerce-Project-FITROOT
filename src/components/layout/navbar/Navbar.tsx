@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './header.module.css'; 
+import styles from './navbar.module.css'; 
 
-const Header = () => {
+const Navbar = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
@@ -16,10 +16,16 @@ const Header = () => {
           <li>
             <Link to="/contact" className={styles.navLink}>Contact</Link>
           </li>
+           <li>
+            <Link to="/register" className={styles.navLink}>Register</Link>
+          </li>
+          <li>
+            <Link to="/login" className={styles.navLink}>Login</Link>
+          </li>
         </ul>
       </nav>
     </header>
   );
 };
 
-export default Header;
+export default Navbar;

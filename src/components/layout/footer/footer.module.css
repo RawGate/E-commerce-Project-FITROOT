@@ -63,9 +63,16 @@
     
 }
 
+.newsletter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .newsletter form {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 10px;
 }
 
@@ -75,16 +82,18 @@
     transition: border-color 0.3s ease;
 }
 
-.newsletter p{
-    color:#fff ;
+.newsletter p {
+    color: #fff;
 }
+
 .newsletter button {
     padding: 8px 16px;
     background-color: #FFEC9E;
     color: rgb(0, 0, 0);
     border: none;
     cursor: pointer;
-    border-radius: 30%;
+    border-radius: 5px;
+    /* Changed to 5px for a more conventional button shape */
     transition: background-color 0.3s ease;
 }
 
@@ -105,8 +114,8 @@
 
 .newsletter h3 {
     color: #FFEC9E;
+    text-align: center;
 }
-
 .copyRight {
     font-size: 0.75rem;
     margin-top: 10px;

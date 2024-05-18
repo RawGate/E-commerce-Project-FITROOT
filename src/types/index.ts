@@ -26,3 +26,25 @@ export type ProductState={
     error: null | string
     isLoading: boolean
 }
+
+export type User ={
+  role?: string
+  name: string
+  address: string
+  email: string
+  password: string
+  phone: string
+  createdAt?: string
+  
+}
+
+export type UserState={
+    error: null | string
+    isLoading: boolean
+}
+
+
+export type LoginFormData = {
+  email: string
+  password: string
+}
