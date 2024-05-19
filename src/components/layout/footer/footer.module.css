@@ -6,7 +6,6 @@
     text-align: center;
     padding: 20px;
     font-family: "Sedan SC", serif;
-    font-weight: 500;
 }
 
 .footerContent {
@@ -17,22 +16,37 @@
 
 .links {
     color: lightgray;
+    text-decoration: none;
 }
 
 .links h3 {
     color: #FFEC9E;
+    text-decoration: none;
 }
-
 .links ul {
     list-style-type: none;
     padding: 0;
 }
 
-.links li {
-    margin: 5px 0;
+.links a {
+    text-decoration: none;
+    color: inherit;
     cursor: pointer;
     transition: transform 0.3s ease;
-    
+}
+
+.links li {
+    margin: 5px 0;
+}
+
+.links a:visited {
+    color: inherit;
+}
+
+.links a:hover,
+.links a:active {
+    color: inherit;
+
 }
 
 .links li:hover {
@@ -88,18 +102,17 @@
 
 .newsletter button {
     padding: 8px 16px;
-    background-color: #FFEC9E;
+    background: linear-gradient(135deg, #fff, #FFEC9E);
     color: rgb(0, 0, 0);
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    /* Changed to 5px for a more conventional button shape */
     transition: background-color 0.3s ease;
 }
 
 .newsletter button:hover {
-    background-color: #FFD700;
-    color: #fff;
+    background: linear-gradient(-135deg, #fff, #FFD700);
+    color: #000;
 }
 
 .newsletter input:focus::placeholder {

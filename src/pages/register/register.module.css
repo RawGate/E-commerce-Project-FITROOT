@@ -90,6 +90,10 @@
     background: linear-gradient(-135deg, #fff, #FFD700);
 }
 
+.register__error {
+    color: red;
+    margin-top: 5px;
+}
 /* Responsive adjustments */
 @media (max-width: 584px) {
     .register {

@@ -4,6 +4,7 @@ import { useSelector } from "react-redux"
 import { AppDispatch, RootState } from "@/tookit/store"
 import { fetchProducts } from "@/tookit/slices/ProductSlice"
 import { useDispatch } from "react-redux"
+
 import "@/index.css"
 
 const Products = () => {

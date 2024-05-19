@@ -93,16 +93,14 @@
   cursor: pointer;
   border: none;
   border-radius: 4px;
-  background-color: #FFEC9E;
+  background: linear-gradient(135deg, #fff, #FFEC9E);
   color: #000;
   transition: background-color 0.3s ease;
 }
 
 .btn-details:hover,
 .btn-add-to-cart:hover {
-  background-color: #FFD700;
-  color: #fff;
-  border-color: #FFD700;
+  background: linear-gradient(-135deg, #fff, #FFD700);
 }
 
 .products button {

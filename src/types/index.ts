@@ -1,11 +1,11 @@
 export type Category = {
-    categoryId: string;
-    name: string;
-    slug: string;
-    description: string;
-    createdAt: string;
-    products: Product[];
-}
+  categoryId: string
+  name: string
+  slug: string
+  description: string
+  createdAt: string
+  products: Product[]
+};
 
 export type Product = {
     productId: string;
@@ -21,7 +21,7 @@ export type Product = {
 }
 
 export type ProductState={
-    products: Product[],
+    products: Product[]
     product: Product | null
     error: null | string
     isLoading: boolean

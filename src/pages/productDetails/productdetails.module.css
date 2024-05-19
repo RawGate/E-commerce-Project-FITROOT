@@ -70,7 +70,7 @@ p {
 }
 
 .btn-add-to-cart {
-    background: #FFEC9E;
+    background: linear-gradient(135deg, #fff, #FFEC9E);
     color: #000000;
     border: none;
     padding: 10px 20px;
@@ -83,8 +83,7 @@ p {
 }
 
 .btn-add-to-cart:hover {
-    background: #FFD700;
-    color: #fff;
+    background: linear-gradient(-135deg, #fff, #FFD700);
     transform: scale(1.05);
 }
 
