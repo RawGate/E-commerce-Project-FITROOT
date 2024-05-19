@@ -34,6 +34,11 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
+            <Link to="/about" className={styles.navLink} onClick={toggleMenu}>
+              About Us
+            </Link>
+          </li>
+          <li>
             <Link to="/contact" className={styles.navLink} onClick={toggleMenu}>
               Contact
             </Link>
