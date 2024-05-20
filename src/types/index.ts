@@ -38,11 +38,13 @@ export type User ={
   
 }
 
-export type UserState={
-    error: null | string
-    isLoading: boolean
+export interface UserState {
+  error: string | null;
+  isLoading: boolean;
+  userData: User | null;
+  token: string | null;
+  isLoggedIn: boolean;
 }
-
 
 export type LoginFormData = {
   email: string

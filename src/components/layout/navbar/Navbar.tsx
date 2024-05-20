@@ -1,12 +1,22 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import styles from "./navbar.module.css"
+import { useDispatch } from "react-redux"
+import { AppDispatch, RootState } from "@/tookit/store"
+import { logoutUser } from "@/tookit/slices/UserSlice"
+import { useSelector } from "react-redux"
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
-
+  const dispatch: AppDispatch = useDispatch()
+  const { isLoggedIn } = useSelector((state: RootState) => state.userR)
   const toggleMenu = () => {
     setMenuOpen(!menuOpen)
+  }
+
+  const handleLogout = () => {
+    dispatch(logoutUser())
+    toggleMenu()
   }
 
   return (
@@ -43,16 +53,29 @@ const Navbar = () => {
               Contact
             </Link>
           </li>
-          <li>
-            <Link to="/register" className={styles.navLink} onClick={toggleMenu}>
-              Register
-            </Link>
-          </li>
-          <li>
-            <Link to="/login" className={styles.navLink} onClick={toggleMenu}>
-              Login
-            </Link>
-          </li>
+          {isLoggedIn && (
+            <>
+              <li>
+                <Link to="/" className={styles.navLink} onClick={handleLogout}>
+                  Logout
+                </Link>
+              </li>
+            </>
+          )}
+          {!isLoggedIn && (
+            <>
+              <li>
+                <Link to="/register" className={styles.navLink} onClick={toggleMenu}>
+                  Register
+                </Link>
+              </li>
+              <li>
+                <Link to="/login" className={styles.navLink} onClick={toggleMenu}>
+                  Login
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </header>
