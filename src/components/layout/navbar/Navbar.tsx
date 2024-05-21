@@ -8,7 +8,7 @@ import { logoutUser } from "@/tookit/slices/UserSlice"
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const dispatch: AppDispatch = useDispatch()
-  const { isLoggedIn, user } = useSelector((state: RootState) => state.userR)
+  const { isLoggedIn, userData } = useSelector((state: RootState) => state.userR)
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen)
@@ -55,7 +55,7 @@ const Navbar = () => {
           </li>
           {isLoggedIn && (
             <>
-              {user?.role === "admin" ? (
+              {userData?.role === "admin" ? (
                 <li>
                   <Link to="/dashboard/admin" className={styles.navLink} onClick={toggleMenu}>
                     Admin Dashboard
