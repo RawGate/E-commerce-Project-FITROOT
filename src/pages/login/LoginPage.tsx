@@ -23,7 +23,7 @@ export const Login = () => {
     try {
       const response = await dispatch(loginUser(data)).unwrap()
 
-      console.log("response from login", response)
+      //console.log("response from login", response)
 
       if (response && response.data && response.data.user && response.data.user.role) {
         const isAdmin = response.data.user.role === "admin"

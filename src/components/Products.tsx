@@ -50,13 +50,8 @@ const Products = () => {
           onChange={handleSearchChange}
         />
         <div>
-          <label htmlFor="product-select">Sort By:</label>
-          <select
-            name="product-select"
-            id="product-select"
-            onChange={handleSortChange}
-            defaultValue="name"
-          >
+          <select name="" id="" onChange={handleSortChange}>
+            <option value="">Select Sorting</option>
             <option value="name">Name</option>
             <option value="price">Price</option>
           </select>

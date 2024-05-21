@@ -25,7 +25,6 @@ export const Register = () => {
     try {
       const response = await dispatch(registerUser(data));
       navigate('/login');
-      console.log('response from register', response);
       setErrorMessage('');
     } catch (error: any) {
       setErrorMessage(error.message || 'registration failed');

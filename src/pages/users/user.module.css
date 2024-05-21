@@ -44,3 +44,22 @@
 .sidebar ul li a:hover {
     text-decoration: underline;
 }
+
+/*user profile*/
+
+.formContainer {
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    max-height: 0;
+    width: 200px;
+    height: 0;
+    margin: 0 auto;
+    background-color: #f0f2f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.formContainer.open {
+    max-height: 200px;
+    height: auto;
+}

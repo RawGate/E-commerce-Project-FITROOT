@@ -1,15 +1,15 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import styles from "./navbar.module.css"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "@/tookit/store"
 import { logoutUser } from "@/tookit/slices/UserSlice"
-import { useSelector } from "react-redux"
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const dispatch: AppDispatch = useDispatch()
-  const { isLoggedIn } = useSelector((state: RootState) => state.userR)
+  const { isLoggedIn, user } = useSelector((state: RootState) => state.userR)
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen)
   }
@@ -55,6 +55,19 @@ const Navbar = () => {
           </li>
           {isLoggedIn && (
             <>
+              {user?.role === "admin" ? (
+                <li>
+                  <Link to="/dashboard/admin" className={styles.navLink} onClick={toggleMenu}>
+                    Admin Dashboard
+                  </Link>
+                </li>
+              ) : (
+                <li>
+                  <Link to="/dashboard/user" className={styles.navLink} onClick={toggleMenu}>
+                    User Dashboard
+                  </Link>
+                </li>
+              )}
               <li>
                 <Link to="/" className={styles.navLink} onClick={handleLogout}>
                   Logout
