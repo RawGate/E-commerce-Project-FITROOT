@@ -27,7 +27,7 @@ export const CategoriesManagement = () => {
   } = useForm<CreateCategoryFormData>()
 
   const [pageNumber, setPageNumber] = useState(1)
-  const [pageSize, setPageSize] = useState(3)
+  const [pageSize, setPageSize] = useState(4)
   const [searchTerm, setSearchTerm] = useState("")
   const [sortBy, setSortBy] = useState("")
   const [isEdit, setIsEdit] = useState(false)
@@ -40,7 +40,7 @@ export const CategoriesManagement = () => {
       await dispatch(fetchCategories({ pageNumber, pageSize, searchTerm, sortBy }))
     }
     fetchData()
-  }, [pageNumber, searchTerm, sortBy])
+  }, [pageNumber, searchTerm, sortBy, dispatch])
 
   const handleNextPage = () => {
     setPageNumber((currentPage) => currentPage + 1)
@@ -115,7 +115,7 @@ export const CategoriesManagement = () => {
       <AdminSidebar />
       <div className="categories-container">
         {!isEdit && (
-          <div className="create-category">
+          <div className="create-category form-box">
             <h2>Create Category</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="category-form">
               <div>
@@ -134,13 +134,15 @@ export const CategoriesManagement = () => {
                 <label htmlFor="description">Description:</label>
                 <textarea id="description" {...register("description")} />
               </div>
-              <button type="submit">Create</button>
+              <div className="form-buttons">
+                <button type="submit">Create</button>
+              </div>
             </form>
           </div>
         )}
 
         {isEdit && (
-          <div className="edit-category">
+          <div className="edit-category form-box">
             <div className="edit-category-header">
               <h2>Edit Category</h2>
               <button className="close-button" onClick={handleCancelEdit}>
@@ -160,7 +162,9 @@ export const CategoriesManagement = () => {
                   onChange={handleDescriptionChange}
                 />
               </div>
-              <button type="submit">Update</button>
+              <div className="form-buttons">
+                <button type="submit">Update</button>
+              </div>
             </form>
           </div>
         )}
@@ -180,15 +184,22 @@ export const CategoriesManagement = () => {
               <option value="description">Description</option>
             </select>
           </div>
-          <section>
-            {categories &&
-              categories.length > 0 &&
-              categories.map((category) => (
-                <div className="category-item" key={category.categoryId}>
-                  <div>
-                    <h2>{category.name}</h2>
-                    <p>{category.description}</p>
-                    <div>
+          <table className="category-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {categories &&
+                categories.length > 0 &&
+                categories.map((category) => (
+                  <tr key={category.categoryId}>
+                    <td>{category.name}</td>
+                    <td>{category.description}</td>
+                    <td>
                       <button
                         onClick={() => handleEdit(category.categoryId, category)}
                         className="category-edit-button"
@@ -201,11 +212,11 @@ export const CategoriesManagement = () => {
                       >
                         <FontAwesomeIcon icon={faTrash} />
                       </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-          </section>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
           <div className="pagination-buttons">
             <button onClick={handlePreviousPage} disabled={pageNumber === 1}>
               ‹

@@ -43,16 +43,18 @@ export type User ={
   email: string
   password: string
   phone: string
-  createdAt?: string
+  isBlocked?: boolean
   
 }
 
 export interface UserState {
-  error: string | null;
-  isLoading: boolean;
-  userData: User | null;
-  token: string | null;
-  isLoggedIn: boolean;
+  users: User[]
+  totalPages: number
+  error: string | null
+  isLoading: boolean
+  userData: User | null
+  token: string | null
+  isLoggedIn: boolean
 }
 
 export type LoginFormData = {

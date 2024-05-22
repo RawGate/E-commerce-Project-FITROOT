@@ -19,8 +19,8 @@ import { ProductDetails } from "@/pages/productDetails/ProductDetails"
 import Protected from "./Protected"
 import AdminRoute from "./AdminRoute"
 import { ProductsManagement } from "@/components/ProductsManagement"
-import { UsersManagement } from "@/components/UsersManagement"
 import { CategoriesManagement } from "@/components/CategoriesManagement"
+import UsersManagement from "@/components/UsersManagement"
 
 const Index = () => {
   return (
