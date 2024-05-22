@@ -114,28 +114,30 @@ export const CategoriesManagement = () => {
     <div className="categories-management">
       <AdminSidebar />
       <div className="categories-container">
-        <div className="create-category">
-          <h2>Create Category</h2>
-          <form onSubmit={handleSubmit(onSubmit)} className="category-form">
-            <div>
-              <label htmlFor="name">Name:</label>
-              <input
-                type="text"
-                id="name"
-                {...register("name", {
-                  required: "Name is required",
-                  minLength: { value: 2, message: "Name must be at least 2 characters" }
-                })}
-              />
-              {errors.name && <p>{errors.name.message}</p>}
-            </div>
-            <div>
-              <label htmlFor="description">Description:</label>
-              <textarea id="description" {...register("description")} />
-            </div>
-            <button type="submit">Create</button>
-          </form>
-        </div>
+        {!isEdit && (
+          <div className="create-category">
+            <h2>Create Category</h2>
+            <form onSubmit={handleSubmit(onSubmit)} className="category-form">
+              <div>
+                <label htmlFor="name">Name:</label>
+                <input
+                  type="text"
+                  id="name"
+                  {...register("name", {
+                    required: "Name is required",
+                    minLength: { value: 2, message: "Name must be at least 2 characters" }
+                  })}
+                />
+                {errors.name && <p>{errors.name.message}</p>}
+              </div>
+              <div>
+                <label htmlFor="description">Description:</label>
+                <textarea id="description" {...register("description")} />
+              </div>
+              <button type="submit">Create</button>
+            </form>
+          </div>
+        )}
 
         {isEdit && (
           <div className="edit-category">
