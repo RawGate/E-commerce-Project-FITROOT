@@ -1,11 +1,11 @@
 import AdminSidebar from "@/components/layout/sidebars/AdminSidebar"
 import React from "react"
 
-export const Categories = () => {
+export const UsersManagement = () => {
   return (
     <div className="user__container">
       <AdminSidebar />
-      {/*<div>Categories CRUDs</div>*/}
+      {/*<div>Users CRUDs</div>*/}
     </div>
   )
 }

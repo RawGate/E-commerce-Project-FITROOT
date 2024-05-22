@@ -25,9 +25,8 @@ export const loginUser = createAsyncThunk("users/loginUser", async (userData: Lo
 export const updateUser = createAsyncThunk(
   "users/updateUser",
   async ({ updateUserData, userId }: { updateUserData: UpdateProfileFormData; userId: string }) => {
-    const token = getToken();
-    const response = await api.put(`/users/${userId}`, updateUserData, {headers: {
-      Authorization:`Bearer ${token}`
+    const response = await api.put(`/users/${userId}`, updateUserData, {    headers: {
+      Authorization:`Bearer ${getToken()}`
     }})
     if (response.data) {
       console.log(response.data)

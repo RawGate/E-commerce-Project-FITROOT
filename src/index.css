@@ -284,3 +284,136 @@
     padding: 10px 15px;
   }
 }
+
+/*category managemnt*/
+
+.categories-management {
+  display: flex;
+  width: 100%;
+}
+
+.categories-container {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.create-category,
+.edit-category {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+}
+
+.category-form,
+.category-edit-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.category-form,
+.category-edit-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.category-form button,
+.category-edit-form button {
+  padding: 8px 12px;
+  background-color: #FFEC9E;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 80px;
+}
+
+.category-form button:hover,
+.category-edit-form button:hover {
+  background-color: #FFD700;
+}
+
+.category-list .search-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.category-item {
+  border: 1px solid #eee;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  transition: transform 0.3s ease;
+}
+
+.category-item:hover {
+  transform: scale(1.05);
+}
+
+.category-edit-button,
+.category-delete-button {
+  padding: 5px 10px;
+  border: none;
+  color: #000;
+  margin-right: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.category-edit-button {
+  background-color: #FFEC9E;
+}
+
+.category-edit-button:hover {
+  background-color: #FFD700;
+}
+
+.category-delete-button {
+  background-color: #FFEC9E;
+}
+
+.category-delete-button:hover {
+  background-color: #FFD700;
+}
+
+.pagination-buttons button {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #FFEC9E;
+  cursor: pointer;
+}
+
+.pagination-buttons button:hover {
+  background: #FFD700;
+}
+
+.pagination-buttons button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.edit-category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #000;
+}
+
+.close-button:hover {
+  color: #FFD700;
+}

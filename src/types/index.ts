@@ -7,6 +7,14 @@ export type Category = {
   products: Product[]
 };
 
+export type CategoryState = {
+  categories: Category[]
+  totalPages: number
+  category: Category | null
+  error: null | string
+  isLoading: boolean
+}
+
 export type Product = {
     productId: string;
     name: string;
@@ -61,4 +69,9 @@ export type LoginData = {
 export type UpdateProfileFormData = {
   name: string
   address: string
+}
+
+export type CreateCategoryFormData = {
+  name: string
+  description: string
 }
