@@ -18,9 +18,10 @@ import Footer from "@/components/layout/footer/Footer"
 import { ProductDetails } from "@/pages/productDetails/ProductDetails"
 import Protected from "./Protected"
 import AdminRoute from "./AdminRoute"
-import { ProductsManagement } from "@/components/ProductsManagement"
+
 import { CategoriesManagement } from "@/components/CategoriesManagement"
 import UsersManagement from "@/components/UsersManagement"
+import { ProductsManagement } from "@/components/ProductsManagement"
 
 const Index = () => {
   return (

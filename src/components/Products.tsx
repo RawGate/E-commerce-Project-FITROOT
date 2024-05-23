@@ -14,15 +14,15 @@ const Products = () => {
 
   const [pageNumber, setPageNumber] = useState(1)
   const [pageSize, setPageSize] = useState(3)
-  const [filteringTerm, setFilteringTerm] = useState("")
-  const [sortColumn, setSortColumn] = useState("")
+  const [searchTerm, setSearchTerm] = useState("")
+  const [sortBy, setSortBy] = useState("")
 
   useEffect(() => {
     const fetchData = async () => {
-      await dispatch(fetchProducts({ pageNumber, pageSize, filteringTerm, sortColumn }))
+      await dispatch(fetchProducts({ pageNumber, pageSize, searchTerm, sortBy }))
     }
     fetchData()
-  }, [pageNumber, filteringTerm, sortColumn])
+  }, [pageNumber, searchTerm, sortBy])
 
   const handleNextPage = () => {
     setPageNumber((currentPage) => currentPage + 1)
@@ -31,11 +31,11 @@ const Products = () => {
     setPageNumber((currentPage) => currentPage - 1)
   }
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFilteringTerm(e.target.value)
+    setSearchTerm(e.target.value)
   }
 
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSortColumn(e.target.value)
+    setSortBy(e.target.value)
   }
 
   return (
@@ -46,7 +46,7 @@ const Products = () => {
         <input
           type="text"
           placeholder="Search"
-          value={filteringTerm}
+          value={searchTerm}
           onChange={handleSearchChange}
         />
         <div>

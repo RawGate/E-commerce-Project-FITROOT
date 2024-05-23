@@ -16,16 +16,17 @@ export type CategoryState = {
 }
 
 export type Product = {
-    productId: string;
-    name: string;
-    slug: string;
-    image: string;
-    description: string;
-    color: string;
-    soldQuantity: number;
-    price: number;
-    stock: number;
-    categoryId: string;
+  productId: string
+  name: string
+  slug: string
+  image: string
+  description: string
+  color?: string
+  soldQuantity: number
+  price: number
+  stock: number
+  categories: Category[]
+  categoryId: string
 }
 
 export type ProductState={
@@ -76,4 +77,22 @@ export type UpdateProfileFormData = {
 export type CreateCategoryFormData = {
   name: string
   description: string
+}
+
+export type CreateProductFormData = {
+  name: string
+  image: FileList
+  description: string
+  price: number
+  stock: number
+  categoryId: string
+}
+
+export type CreateProductForBackend = {
+  name: string
+  image: string 
+  description: string
+  price: number
+  stock: number
+  categoryId: string
 }
