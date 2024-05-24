@@ -1,111 +1,128 @@
-import React, { useState } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import styles from './register.module.css';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '@/tookit/store';
-import { registerUser } from '@/tookit/slices/UserSlice';
-import { useNavigate } from 'react-router-dom';
-import { Alert } from '@mui/material';
+import React, { useState } from "react"
+import { SubmitHandler, useForm } from "react-hook-form"
+import styles from "./register.module.css"
+import { useDispatch } from "react-redux"
+import { AppDispatch } from "@/tookit/store"
+import { registerUser } from "@/tookit/slices/UserSlice"
+import { useNavigate } from "react-router-dom"
+import { Alert } from "@mui/material"
 
 type FormData = {
-  name: string;
-  email: string;
-  password: string;
-  phone: string;
-  address: string;
-};
+  name: string
+  email: string
+  password: string
+  phone: string
+  address: string
+}
+
 
 export const Register = () => {
-  const navigate = useNavigate();
-  const dispatch: AppDispatch = useDispatch();
-  const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
-  const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate()
+  const dispatch: AppDispatch = useDispatch()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<FormData>()
+  const [errorMessage, setErrorMessage] = useState("")
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     try {
-      const response = await dispatch(registerUser(data));
-      navigate('/login');
-      setErrorMessage('');
+      await dispatch(registerUser(data))
+      navigate("/login")
+      setErrorMessage("")
     } catch (error: any) {
-      setErrorMessage(error.message || 'registration failed');
+      setErrorMessage(error.message || "registration failed")
     }
-  };
+  }
 
   return (
     <div className={styles.register}>
       <h2 className={styles.register__title}>Register</h2>
       <form className={styles.register__form} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.register__formGroup}>
-          <label htmlFor="name" className={styles.register__label}>Name:</label>
+          <label htmlFor="name" className={styles.register__label}>
+            Name:
+          </label>
           <input
             type="text"
             className={styles.register__input}
-            {...register('name', {
-              required: 'Name is required',
+            {...register("name", {
+              required: "Name is required",
               minLength: {
                 value: 2,
-                message: 'Name must be at least 2 characters',
-              },
+                message: "Name must be at least 2 characters"
+              }
             })}
           />
           {errors.name && <p className={styles.register__error}>{errors.name.message}</p>}
         </div>
         <div className={styles.register__formGroup}>
-          <label htmlFor="email" className={styles.register__label}>Email:</label>
+          <label htmlFor="email" className={styles.register__label}>
+            Email:
+          </label>
           <input
             type="email"
             className={styles.register__input}
-            {...register('email', {
-              required: 'Email is required',
+            {...register("email", {
+              required: "Email is required",
               pattern: {
                 value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                message: 'Email is not valid',
-              },
+                message: "Email is not valid"
+              }
             })}
           />
           {errors.email && <p className={styles.register__error}>{errors.email.message}</p>}
         </div>
         <div className={styles.register__formGroup}>
-          <label htmlFor="password" className={styles.register__label}>Password:</label>
+          <label htmlFor="password" className={styles.register__label}>
+            Password:
+          </label>
           <input
             type="password"
             className={styles.register__input}
-            {...register('password', {
-              required: 'Password is required',
+            {...register("password", {
+              required: "Password is required",
               minLength: {
                 value: 6,
-                message: 'Password must be at least 6 characters',
-              },
+                message: "Password must be at least 6 characters"
+              }
             })}
           />
           {errors.password && <p className={styles.register__error}>{errors.password.message}</p>}
         </div>
         <div className={styles.register__formGroup}>
-          <label htmlFor="phone" className={styles.register__label}>Phone:</label>
+          <label htmlFor="phone" className={styles.register__label}>
+            Phone:
+          </label>
           <input
             type="phone"
             className={styles.register__input}
-            {...register('phone', {
-              required: 'Phone is required',
+            {...register("phone", {
+              required: "Phone is required",
               minLength: {
                 value: 9,
-                message: 'Phone must be at least 9 characters',
-              },
+                message: "Phone must be at least 9 characters"
+              }
             })}
           />
           {errors.phone && <p className={styles.register__error}>{errors.phone.message}</p>}
         </div>
         <div className={styles.register__formGroup}>
-          <label htmlFor="address" className={styles.register__label}>Address:</label>
-          <textarea id="" className={styles.register__textarea} {...register('address')}></textarea>
+          <label htmlFor="address" className={styles.register__label}>
+            Address:
+          </label>
+          <textarea id="" className={styles.register__textarea} {...register("address")}></textarea>
         </div>
         <div className={styles.register__button}>
-          <button type="submit" className={styles.register__submitBtn}>Register</button>
+          <button type="submit" className={styles.register__submitBtn}>
+            Register
+          </button>
         </div>
       </form>
       {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
     </div>
-  );
-};
+  )
+}
 
-export default Register;
+export default Register

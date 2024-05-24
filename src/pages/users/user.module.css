@@ -47,19 +47,104 @@
 
 /*user profile*/
 
+.user__container {
+    display: flex;
+    padding: 20px;
+}
+
+.mainContent {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.userInfoAvatar {
+    margin-right: 15px;
+}
+
+.userInfoText {
+    color: #333;
+}
+
+.userInfoText h3 {
+    margin: 5px 0;
+}
+
+.editBtn {
+    background: linear-gradient(135deg, #fff, #FFEC9E);
+    color: #000;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.editBtn:hover {
+    background: linear-gradient(-135deg, #fff, #FFD700);
+}
+
 .formContainer {
-    overflow: hidden;
-    transition: max-height 0.5s ease-out;
-    max-height: 0;
-    width: 200px;
-    height: 0;
-    margin: 0 auto;
-    background-color: #f0f2f5;
+    display: none;
+}
+
+.formContainer.open {
+    display: block;
+}
+
+.updateForm {
+    background-color: #fff;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.formContainer.open {
-    max-height: 200px;
-    height: auto;
+.formGroup {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.formGroup label {
+    flex: 0 0 100px;
+    color: #ffcc00;
+    margin-right: 10px;
+}
+
+.formGroup input,
+.formGroup textarea {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.formGroup textarea {
+    resize: vertical;
+}
+
+.submitBtn {
+    background: linear-gradient(135deg, #fff, #FFEC9E);
+    color: #000;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submitBtn:hover {
+    background: linear-gradient(-135deg, #fff, #FFD700);
+}
+
+.errorMessage {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 5px;
 }

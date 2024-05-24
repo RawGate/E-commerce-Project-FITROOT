@@ -10,24 +10,38 @@ export const fetchProducts = createAsyncThunk(
     pageNumber,
     pageSize,
     searchTerm,
-    sortBy
+    sortBy,
+    selectedCategories,
+    minPrice,
+    maxPrice
   }: {
     pageNumber: number
     pageSize: number
     searchTerm: string
     sortBy: string
+    selectedCategories: string[]
+    minPrice?: number
+    maxPrice?: number
   }) => {
-    if (searchTerm.length > 0) {
-      const response = await api.get(
-        `/products?searchTerm=${searchTerm}&pageNumber=${pageNumber}&pageSize=${pageSize}`
-      )
-      return response.data
-    } else {
-      const response = await api.get(
-        `/products?pageNumber=${pageNumber}&pageSize=${pageSize}&sortColumn=${sortBy}`
-      )
-      return response.data
+    const params = new URLSearchParams({
+      pageNumber: pageNumber.toString(),
+      pageSize: pageSize.toString(),
+      searchTerm,
+      sortBy
+
+    })
+    selectedCategories.forEach((categoryId) =>  {
+      params.append("SelectedCategories", categoryId)
+    })
+    if(minPrice !== undefined){
+      params.append("minPrice", minPrice.toString())
     }
+    if (maxPrice !== undefined) {
+      params.append("maxPrice", maxPrice.toString())
+    }
+    
+    const response = await api.get("/products", {params})
+    return response.data
   }
 )
 

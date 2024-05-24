@@ -8,6 +8,7 @@ import { LoginFormData } from "@/types"
 import styles from "./login.module.css"
 import { useNavigate } from "react-router-dom"
 
+
 export const Login = () => {
   const dispatch: AppDispatch = useDispatch()
   const navigate = useNavigate()
@@ -22,8 +23,6 @@ export const Login = () => {
   const onSubmit: SubmitHandler<LoginFormData> = async (data) => {
     try {
       const response = await dispatch(loginUser(data)).unwrap()
-
-      //console.log("response from login", response)
 
       if (response && response.data && response.data.user && response.data.user.role) {
         const isAdmin = response.data.user.role === "admin"

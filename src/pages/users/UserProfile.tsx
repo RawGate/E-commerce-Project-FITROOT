@@ -1,14 +1,15 @@
+import React, { useState } from "react"
 import UserSidebar from "@/components/layout/sidebars/UserSidebar"
 import useUserState from "@/hooks/useUserState"
 import { updateUser } from "@/tookit/slices/UserSlice"
 import { AppDispatch } from "@/tookit/store"
 import { UpdateProfileFormData } from "@/types"
-import React, { useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { useDispatch } from "react-redux"
 import styles from "./user.module.css"
+import InitialsAvatar from "@/components/ui/InitialsAvatar" // Adjust this path as needed
 
-export const UserProfile = () => {
+export const UserProfile: React.FC = () => {
   const { userData } = useUserState()
   const dispatch: AppDispatch = useDispatch()
   const {
@@ -38,14 +39,17 @@ export const UserProfile = () => {
         {userData && (
           <>
             <div className={styles.userInfo}>
-              <h3>Name: {userData.name}</h3>
-              <h3>Email: {userData.email}</h3>
-              <h3>Address: {userData.address}</h3>
-              <button className={styles.editBtn} onClick={() => setIsFormOpen(!isFormOpen)}>
-                {isFormOpen ? "Close" : "Edit Info"}
-              </button>
+              <div className={styles.userInfoAvatar}>
+                <InitialsAvatar name={userData.name} className="h-16 w-16" />
+              </div>
+              <div className={styles.userInfoText}>
+                <h3>{userData.name}</h3>
+                <h3>{userData.email}</h3>
+              </div>
             </div>
-
+            <button className={styles.editBtn} onClick={() => setIsFormOpen(!isFormOpen)}>
+              {isFormOpen ? "Close" : "Edit Info"}
+            </button>
             {isFormOpen && (
               <div className={`${styles.formContainer} ${isFormOpen ? styles.open : styles.close}`}>
                 <form className={styles.updateForm} onSubmit={handleSubmit(onSubmit)}>
@@ -63,10 +67,19 @@ export const UserProfile = () => {
                   </div>
                   <div className={styles.formGroup}>
                     <label htmlFor="address">Address:</label>
-                    <textarea id="address" {...register("address")} />
+                    <input
+                      type="text"
+                      id="address"
+                      {...register("address", {
+                        required: "Address is required"
+                      })}
+                    />
+                    {errors.address && (
+                      <p className={styles.errorMessage}>{errors.address.message}</p>
+                    )}
                   </div>
                   <button className={styles.submitBtn} type="submit">
-                    Update Info
+                    Save
                   </button>
                 </form>
               </div>

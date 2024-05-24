@@ -7,7 +7,7 @@ import styles from "./sidebar.module.css"
 const UserSidebar = () => {
   const { userData } = useSelector((state: RootState) => state.userR)
   return (
-    <aside className={styles.sidebar}>
+    <aside className={styles.sidebarr}>
       <div>
         <h2>Profile</h2>
         <p>{userData?.name}</p>
