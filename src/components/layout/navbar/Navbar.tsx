@@ -1,14 +1,18 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import styles from "./navbar.module.css"
-import { useDispatch, useSelector } from "react-redux"
-import { AppDispatch, RootState } from "@/tookit/store"
+import { useDispatch } from "react-redux"
+import { AppDispatch } from "@/tookit/store"
 import { logoutUser } from "@/tookit/slices/UserSlice"
+import { CartIcon } from "@/components/CartIcon"
+import useCartState from "@/hooks/useCartState"
+import useUserState from "@/hooks/useUserState"
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const dispatch: AppDispatch = useDispatch()
-  const { isLoggedIn, userData } = useSelector((state: RootState) => state.userR)
+  const { isLoggedIn, userData } = useUserState()
+  const { cartItems } = useCartState()
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen)
@@ -21,20 +25,25 @@ const Navbar = () => {
 
   return (
     <header className={styles.header}>
+      <Link to="/cart" className={styles.cartIcon}>
+        <CartIcon value={cartItems && cartItems.length > 0 ? cartItems.length : 0} />
+      </Link>
       <div className={styles.logo}>
         <img src="/public/img/logo.png" alt="Logo" />
       </div>
-      <input
-        type="checkbox"
-        id="menuToggle"
-        checked={menuOpen}
-        onChange={toggleMenu}
-        className={styles.checkbox}
-      />
-      <div className={styles.hamburgerLines} onClick={toggleMenu}>
-        <span className={`${styles.line} ${menuOpen ? styles.line1 : ""}`}></span>
-        <span className={`${styles.line} ${menuOpen ? styles.line2 : ""}`}></span>
-        <span className={`${styles.line} ${menuOpen ? styles.line3 : ""}`}></span>
+      <div className={styles.menuContainer}>
+        <input
+          type="checkbox"
+          id="menuToggle"
+          checked={menuOpen}
+          onChange={toggleMenu}
+          className={styles.checkbox}
+        />
+        <div className={styles.hamburgerLines} onClick={toggleMenu}>
+          <span className={`${styles.line} ${menuOpen ? styles.line1 : ""}`}></span>
+          <span className={`${styles.line} ${menuOpen ? styles.line2 : ""}`}></span>
+          <span className={`${styles.line} ${menuOpen ? styles.line3 : ""}`}></span>
+        </div>
       </div>
       <nav className={`${styles.navbar} ${menuOpen ? styles.menuOpen : ""}`}>
         <ul className={styles.menuItems}>

@@ -89,7 +89,6 @@ const CategorySlice = createSlice({
         state.error = null
       })
       .addCase(fetchCategories.fulfilled, (state, action) => {
-        console.log(action.payload)
         state.categories = action.payload
         state.totalPages = action.payload.totalPages 
         state.isLoading = false

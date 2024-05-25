@@ -178,6 +178,7 @@
   background-color: #FFEC9E;
   color: #fff;
 }
+
 .product-list-buttons {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -723,4 +724,20 @@
   border-radius: 50%;
   background-color: #FFEC9E;
   color: #333;
+}
+
+/*cart icon*/
+.cart-icon{
+  height: 100%;
+  position: relative;
+}
+.items-number{
+  background-color: #FFEC9E;
+  color: #000;
+  position: absolute;
+  top: -14px;
+  right: -18px;
+  padding: 1px 6px;
+  border-radius: 10px;
+  
 }

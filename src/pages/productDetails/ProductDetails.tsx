@@ -7,11 +7,17 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './productdetails.module.css';
 import PagesTitle from '@/components/PagesTitle';
+import { Product } from '@/types';
+import { addtoCart } from '@/tookit/slices/CartSlice';
 
 export const ProductDetails = () => {
   const { slug } = useParams<{ slug?: string }>();
   const { product, isLoading, error } = useSelector((state: RootState) => state.productR);
   const dispatch: AppDispatch = useDispatch();
+
+  const handleAddToCart = (product: Product) => {
+    dispatch(addtoCart(product))
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,7 +51,7 @@ export const ProductDetails = () => {
       <div className={styles.productDetails__title}>
         <PagesTitle title="Product Details" />
         <h2>Product Details</h2>
-        </div>
+      </div>
       <div className={styles.productDetails__container}>
         <img src={product.image} alt={product.name} className={styles.productDetails__img} />
         <div className={styles.productDetails__body}>
@@ -54,12 +60,17 @@ export const ProductDetails = () => {
           <p>Price: ${product.price}</p>
           <p>Stock: {product.stock}</p>
           <p>Sold: {product.soldQuantity}</p>
-          <button className={styles['btn-add-to-cart']}>
+          <button
+            className="btn-add-to-cart"
+            onClick={() => {
+              handleAddToCart(product)
+            }}
+          >
             <FontAwesomeIcon icon={faCartShopping} />
           </button>
         </div>
       </div>
     </article>
-  );
+  )
 };
 

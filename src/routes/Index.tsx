@@ -11,7 +11,8 @@ import {
   UserProfile,
   UserOrders,
   Orders,
-  Contact
+  Contact,
+  CartPage
 } from "@/pages"
 import Navbar from "@/components/layout/navbar/Navbar"
 import Footer from "@/components/layout/footer/Footer"
@@ -34,6 +35,8 @@ const Index = () => {
         <Route path="/products/:slug" element={<ProductDetails />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/cart" element={<CartPage />} />
+
 
         <Route path="/dashboard" element={<Protected />}>
           <Route path="user" element={<UserDashboard />} />

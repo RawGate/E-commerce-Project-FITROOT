@@ -14,8 +14,9 @@
 }
 
 .hero-container img {
-    width: 60%;
+    width: 50%;
     border-radius: 10px;
+    opacity: 0.8;
 }
 
 .hero-container h1 {

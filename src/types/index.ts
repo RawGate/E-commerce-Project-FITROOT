@@ -36,6 +36,10 @@ export type ProductState={
     isLoading: boolean
 }
 
+export type CartState = {
+  cartItems: Product[]
+}
+
 export type User ={
   userId?: string
   role?: string
@@ -96,3 +100,4 @@ export type CreateProductForBackend = {
   stock: number
   categoryId: string
 }
+

@@ -112,7 +112,6 @@ const productSlice = createSlice({
         state.error = null
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        console.log(action.payload)
         state.products = action.payload
         state.isLoading = false
       })
