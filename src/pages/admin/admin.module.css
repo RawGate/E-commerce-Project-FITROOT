@@ -1,50 +1,40 @@
-/* admin.module.css */
-
-.dashboardContainer {
+.dashboard-container {
     display: flex;
-    height: 100vh;
-    overflow: hidden;
 }
 
-.mainContent {
+.main-content {
     flex-grow: 1;
-    overflow-y: auto;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
 }
 
-.statsContainer {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+.summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
 }
 
-.stat {
-    background: #f0f0f0;
+.summary-item {
+    background-color: #f9f9f9;
     padding: 20px;
+    border: 1px solid #ddd;
     border-radius: 8px;
     text-align: center;
-    flex: 1;
-    margin: 0 10px;
 }
 
-.chartContainer {
+.summary-item h3 {
+    margin-bottom: 10px;
+}
+
+.charts {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
 }
 
 .chart {
-    background: #fff;
+    background-color: #fff;
     padding: 20px;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    height: 400px;
-    /* Fixed height to prevent shifting */
-    display: flex;
-    flex-direction: column;
-}
-
-.chart h2 {
-    margin-bottom: 20px;
 }

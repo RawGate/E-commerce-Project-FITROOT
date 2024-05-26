@@ -41,6 +41,8 @@ export const ProductsManagement = () => {
   const [selectedProduct, setSelectedProduct] = useState<CreateProductFormData | null>(null)
   const [selectedProductId, setSelectedProductId] = useState<string>("")
   const [productCategoryId, setProductCategoryId] = useState<string>("")
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,7 +53,17 @@ export const ProductsManagement = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      await dispatch(fetchProducts({ pageNumber, pageSize, searchTerm, sortBy }))
+      await dispatch(
+        fetchProducts({
+          pageNumber,
+          pageSize,
+          searchTerm,
+          sortBy,
+          selectedCategories,
+          minPrice: priceRange[0],
+          maxPrice: priceRange[1]
+        })
+      )
     }
     fetchData()
   }, [pageNumber, searchTerm, sortBy, dispatch])
@@ -84,7 +96,7 @@ export const ProductsManagement = () => {
         image: imageUrl
       }
       await dispatch(createProduct(productData))
-      reset() // Reset form fields after product creation
+      reset() 
       setImagePreview(null)
     } catch (error) {
       console.log("Product creation failed", error)
@@ -134,7 +146,7 @@ export const ProductsManagement = () => {
         updateProduct({ updateProductData: updatedProductData, productId: selectedProductId })
       )
       setIsEdit(false)
-      reset() // Reset form fields after product update
+      reset() 
       setImagePreview(null)
     } catch (error) {
       console.log("Product update failed", error)
@@ -147,7 +159,7 @@ export const ProductsManagement = () => {
     setSelectedProductId("")
     setImagePreview(null)
     setProductCategoryId("")
-    reset() // Reset form fields when canceling edit
+    reset() 
   }
 
   return (

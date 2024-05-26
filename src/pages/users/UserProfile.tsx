@@ -7,7 +7,7 @@ import { UpdateProfileFormData } from "@/types"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { useDispatch } from "react-redux"
 import styles from "./user.module.css"
-import InitialsAvatar from "@/components/ui/InitialsAvatar" // Adjust this path as needed
+import InitialsAvatar from "@/components/ui/InitialsAvatar"
 
 export const UserProfile: React.FC = () => {
   const { userData } = useUserState()
@@ -78,6 +78,35 @@ export const UserProfile: React.FC = () => {
                       <p className={styles.errorMessage}>{errors.address.message}</p>
                     )}
                   </div>
+                  <div className={styles.formGroup}>
+                    <label htmlFor="phone">Phone:</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      {...register("phone", {
+                        required: "Phone number is required",
+                        pattern: {
+                          value: /^\d{10,}$/,
+                          message: "Phone number must be at least 10 digits"
+                        }
+                      })}
+                    />
+                    {errors.phone && <p className={styles.errorMessage}>{errors.phone.message}</p>}
+                  </div>
+                  <div className={styles.formGroup}>
+                    <label htmlFor="password">Password:</label>
+                    <input
+                      type="password"
+                      id="password"
+                      {...register("password", {
+                        required: "Password is required",
+                        minLength: { value: 6, message: "Password must be at least 6 characters" }
+                      })}
+                    />
+                    {errors.password && (
+                      <p className={styles.errorMessage}>{errors.password.message}</p>
+                    )}
+                  </div>
                   <button className={styles.submitBtn} type="submit">
                     Save
                   </button>
@@ -90,3 +119,5 @@ export const UserProfile: React.FC = () => {
     </div>
   )
 }
+
+export default UserProfile

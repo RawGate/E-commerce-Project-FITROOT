@@ -1,183 +1,134 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { useDispatch } from "react-redux"
+import { Bar, Pie } from "react-chartjs-2"
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  ArcElement,
+  Tooltip,
+  Legend
+} from "chart.js"
 import AdminSidebar from "@/components/layout/sidebars/AdminSidebar"
-import { ResponsiveLine } from "@nivo/line"
-import { ResponsivePie } from "@nivo/pie"
-import { ResponsiveBar } from "@nivo/bar"
 import styles from "./admin.module.css"
+import useOrderState from "@/hooks/useOrderState"
+import useUserState from "@/hooks/useUserState"
+import useProductState from "@/hooks/useProductState"
+import { AppDispatch } from "@/tookit/store"
+import { fetchOrders } from "@/tookit/slices/OrdersSlice"
+import { fetchUsers } from "@/tookit/slices/UserSlice"
+import { fetchProducts } from "@/tookit/slices/ProductSlice"
 
-const dataLine = [
-  {
-    id: "Desktop",
-    data: [
-      { x: "Jan", y: 43 },
-      { x: "Feb", y: 137 },
-      { x: "Mar", y: 61 },
-      { x: "Apr", y: 145 },
-      { x: "May", y: 26 },
-      { x: "Jun", y: 154 }
-    ]
-  },
-  {
-    id: "Mobile",
-    data: [
-      { x: "Jan", y: 60 },
-      { x: "Feb", y: 48 },
-      { x: "Mar", y: 177 },
-      { x: "Apr", y: 78 },
-      { x: "May", y: 96 },
-      { x: "Jun", y: 204 }
+ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Tooltip, Legend)
+
+export const AdminDashboard: React.FC = () => {
+  const dispatch: AppDispatch = useDispatch()
+  const { orders } = useOrderState()
+  const { users } = useUserState()
+  const { products } = useProductState()
+
+  useEffect(() => {
+    dispatch(fetchOrders())
+    dispatch(fetchUsers({ pageNumber: 1, pageSize: 10, searchTerm: "", sortBy: "" }))
+    dispatch(
+      fetchProducts({
+        pageNumber: 1,
+        pageSize: 10,
+        searchTerm: "",
+        sortBy: "",
+        selectedCategories: [],
+        minPrice: undefined,
+        maxPrice: undefined
+      })
+    )
+  }, [dispatch])
+
+  const ordersCount = orders.length
+  const usersCount = users.length
+  const productsCount = products.length
+
+  const orderStatusData = {
+    labels: ["Pending", "Shipped", "Delivered", "Cancelled"],
+    datasets: [
+      {
+        label: "Order Status",
+        data: [
+          orders.filter((order) => order.orderStatus === "Pending").length,
+          orders.filter((order) => order.orderStatus === "Shipped").length,
+          orders.filter((order) => order.orderStatus === "Delivered").length,
+          orders.filter((order) => order.orderStatus === "Cancelled").length
+        ],
+        backgroundColor: ["#ff6384", "#36a2eb", "#cc65fe", "#ffce56"]
+      }
     ]
   }
-]
 
-const dataPie = [
-  { id: "Jan", value: 111 },
-  { id: "Feb", value: 157 },
-  { id: "Mar", value: 129 },
-  { id: "Apr", value: 150 },
-  { id: "May", value: 119 },
-  { id: "Jun", value: 72 }
-]
+  const userRoleData = {
+    labels: ["Admin", "Customer"],
+    datasets: [
+      {
+        label: "User Roles",
+        data: [
+          users.filter((user) => user.role === "admin").length,
+          users.filter((user) => user.role === "customer").length
+        ],
+        backgroundColor: ["#ff6384", "#36a2eb"]
+      }
+    ]
+  }
 
-const dataBar = [
-  { name: "Jan", count: 111 },
-  { name: "Feb", count: 157 },
-  { name: "Mar", count: 129 },
-  { name: "Apr", count: 150 },
-  { name: "May", count: 119 },
-  { name: "Jun", count: 72 }
-]
+  const uniqueCategories = Array.from(
+    new Set(products.map((product) => product.category?.name || "Uncategorized"))
+  )
+  const productCategoryData = {
+    labels: uniqueCategories,
+    datasets: [
+      {
+        label: "Products by Category",
+        data: uniqueCategories.map((category) =>
+          products
+            .filter((product) => (product.category?.name || "Uncategorized") === category)
+            .reduce((acc, product) => acc + product.stock, 0)
+        ),
+        backgroundColor: uniqueCategories.map((_, i) => `hsl(${i * 30}, 70%, 50%)`)
+      }
+    ]
+  }
 
-export const AdminDashboard = () => {
+  console.log("Order Status Data:", orderStatusData)
+
   return (
-    <div className={styles.dashboardContainer}>
+    <div className={styles["dashboard-container"]}>
       <AdminSidebar />
-      <div className={styles.mainContent}>
-        <div className={styles.statsContainer}>
-          <div className={styles.stat}>
-            <h2>Total Users</h2>
-            <p>34</p>
+      <div className={styles["main-content"]}>
+        <h1>Admin Dashboard</h1>
+        <div className={styles["summary"]}>
+          <div className={styles["summary-item"]}>
+            <h3>Users</h3>
+            <p>{usersCount}</p>
           </div>
-          <div className={styles.stat}>
-            <h2>Active Users</h2>
-            <p>5</p>
+          <div className={styles["summary-item"]}>
+            <h3>Products</h3>
+            <p>{productsCount}</p>
           </div>
-          <div className={styles.stat}>
-            <h2>New Signups</h2>
-            <p>4</p>
-          </div>
-          <div className={styles.stat}>
-            <h2>Revenue</h2>
-            <p>$5000</p>
+          <div className={styles["summary-item"]}>
+            <h3>Orders</h3>
+            <p>{ordersCount}</p>
           </div>
         </div>
-        <div className={styles.chartContainer}>
-          <div className={styles.chart}>
-            <h2>User Growth</h2>
-            <ResponsiveLine
-              data={dataLine}
-              margin={{ top: 20, right: 20, bottom: 50, left: 50 }}
-              xScale={{ type: "point" }}
-              yScale={{ type: "linear" }}
-              axisBottom={{
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: "Month",
-                legendOffset: 36,
-                legendPosition: "middle"
-              }}
-              axisLeft={{
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: "Users",
-                legendOffset: -40,
-                legendPosition: "middle"
-              }}
-              colors={["#2563eb", "#e11d48"]}
-              pointSize={10}
-              pointBorderWidth={2}
-              pointLabelYOffset={-12}
-              useMesh={true}
-              theme={{
-                tooltip: {
-                  container: {
-                    background: "#333",
-                    color: "#fff",
-                    fontSize: "12px",
-                    borderRadius: "2px",
-                    boxShadow: "0 3px 9px rgba(0, 0, 0, 0.5)"
-                  }
-                }
-              }}
-            />
+        <div className={styles["charts"]}>
+          <div className={styles["chart"]}>
+            <h3>Order Status</h3>
+            {ordersCount > 0 ? <Pie data={orderStatusData} /> : <p>No data available</p>}
           </div>
-          <div className={styles.chart}>
-            <h2>Revenue Breakdown</h2>
-            <ResponsivePie
-              data={dataPie}
-              margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
-              innerRadius={0.5}
-              padAngle={0.7}
-              cornerRadius={3}
-              colors={{ scheme: "nivo" }}
-              borderWidth={1}
-              borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
-              arcLabelsSkipAngle={10}
-              arcLabelsTextColor="#333333"
-              arcLinkLabelsColor={{ from: "color" }}
-              arcLinkLabelsTextColor="#333333"
-              theme={{
-                tooltip: {
-                  container: {
-                    background: "#333",
-                    color: "#fff",
-                    fontSize: "12px",
-                    borderRadius: "2px",
-                    boxShadow: "0 3px 9px rgba(0, 0, 0, 0.5)"
-                  }
-                }
-              }}
-            />
+          <div className={styles["chart"]}>
+            <h3>User Roles</h3>
+            {usersCount > 0 ? <Pie data={userRoleData} /> : <p>No data available</p>}
           </div>
-          <div className={styles.chart}>
-            <h2>Monthly Sales</h2>
-            <ResponsiveBar
-              data={dataBar}
-              keys={["count"]}
-              indexBy="name"
-              margin={{ top: 20, right: 20, bottom: 50, left: 50 }}
-              padding={0.3}
-              colors={{ scheme: "nivo" }}
-              axisBottom={{
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: "Month",
-                legendPosition: "middle",
-                legendOffset: 32
-              }}
-              axisLeft={{
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: "Sales",
-                legendPosition: "middle",
-                legendOffset: -40
-              }}
-              theme={{
-                tooltip: {
-                  container: {
-                    background: "#333",
-                    color: "#fff",
-                    fontSize: "12px",
-                    borderRadius: "2px",
-                    boxShadow: "0 3px 9px rgba(0, 0, 0, 0.5)"
-                  }
-                }
-              }}
-            />
+          <div className={styles["chart"]}>
+            <h3>Products by Category</h3>
+            {productsCount > 0 ? <Bar data={productCategoryData} /> : <p>No data available</p>}
           </div>
         </div>
       </div>

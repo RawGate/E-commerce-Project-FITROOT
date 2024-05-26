@@ -30,6 +30,7 @@
     "@types/react-redux": "^7.1.33",
     "antd": "^5.17.2",
     "axios": "^1.6.8",
+    "chart.js": "^4.4.3",
     "class-variance-authority": "^0.7.0",
     "classnames": "^2.5.1",
     "cloudinary-react": "^1.8.1",
@@ -37,6 +38,7 @@
     "jwt-decode": "^3.1.2",
     "lucide-react": "^0.378.0",
     "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.51.4",
@@ -51,6 +53,7 @@
   "devDependencies": {
     "@types/node": "^20.12.11",
     "@types/react": "^18.0.28",
+    "@types/react-chartjs-2": "^2.5.7",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.55.0",
     "@typescript-eslint/parser": "^5.55.0",

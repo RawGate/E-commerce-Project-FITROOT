@@ -7,18 +7,19 @@ import styles from "./sidebar.module.css"
 const UserSidebar = () => {
   const { userData } = useSelector((state: RootState) => state.userR)
   return (
-    <aside className={styles.sidebarr}>
+    <aside className={styles.sidebar}>
       <div>
-        <h2>Profile</h2>
-        <p>{userData?.name}</p>
-        <p>{userData?.email}</p>
+        <h2>Quick Links</h2>
       </div>
       <ul>
         <li>
-          <Link to="/dashboard/user/profile">Profile</Link>
+          <Link to="/dashboard/user">Profile</Link>
         </li>
         <li>
-          <Link to="/dashboard/user/orders">Orders</Link>
+          <Link to="/dashboard/user/profile">Edit Info</Link>
+        </li>
+        <li>
+          <Link to="/dashboard/user/orders">Orders History</Link>
         </li>
       </ul>
     </aside>

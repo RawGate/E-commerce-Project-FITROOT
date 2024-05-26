@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap');
 .cart {
     display: flex;
     flex-direction: column;
@@ -161,6 +162,15 @@
     text-decoration: underline;
 }
 
+.cart_noitems_img{
+    width: 300px;
+     height: auto;
+}
+
+.no_items p {
+    font-size: 20px;
+    font-family: "Sedan SC", serif ;
+}
 
 @media (max-width: 480px) {
     .cart_body {
