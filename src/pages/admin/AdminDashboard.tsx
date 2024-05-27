@@ -30,7 +30,7 @@ export const AdminDashboard: React.FC = () => {
 
   useEffect(() => {
     dispatch(fetchOrders())
-    dispatch(fetchUsers({ pageNumber: 1, pageSize: 10, searchTerm: "", sortBy: "" }))
+    dispatch(fetchUsers({ pageNumber: 1, pageSize: 20, searchTerm: "", sortBy: "" }))
     dispatch(
       fetchProducts({
         pageNumber: 1,
@@ -48,21 +48,27 @@ export const AdminDashboard: React.FC = () => {
   const usersCount = users.length
   const productsCount = products.length
 
+  console.log("Fetched Orders:", orders)
+  console.log("Fetched Users:", users)
+  console.log("Fetched Products:", products)
+
   const orderStatusData = {
-    labels: ["Pending", "Shipped", "Delivered", "Cancelled"],
-    datasets: [
-      {
+    labels: ["Pending", "Shipped", "Delivered"],
+   datasets: [{
+    
         label: "Order Status",
         data: [
           orders.filter((order) => order.orderStatus === "Pending").length,
           orders.filter((order) => order.orderStatus === "Shipped").length,
           orders.filter((order) => order.orderStatus === "Delivered").length,
-          orders.filter((order) => order.orderStatus === "Cancelled").length
+      
         ],
         backgroundColor: ["#ff6384", "#36a2eb", "#cc65fe", "#ffce56"]
       }
     ]
   }
+
+  console.log("Order Status Data:", orderStatusData)
 
   const userRoleData = {
     labels: ["Admin", "Customer"],
@@ -96,13 +102,13 @@ export const AdminDashboard: React.FC = () => {
     ]
   }
 
-  console.log("Order Status Data:", orderStatusData)
+  console.log("Product Category Data:", productCategoryData)
 
   return (
     <div className={styles["dashboard-container"]}>
       <AdminSidebar />
       <div className={styles["main-content"]}>
-        <h1>Admin Dashboard</h1>
+        <h1> Dashboard</h1>
         <div className={styles["summary"]}>
           <div className={styles["summary-item"]}>
             <h3>Users</h3>
@@ -120,7 +126,7 @@ export const AdminDashboard: React.FC = () => {
         <div className={styles["charts"]}>
           <div className={styles["chart"]}>
             <h3>Order Status</h3>
-            {ordersCount > 0 ? <Pie data={orderStatusData} /> : <p>No data available</p>}
+            {ordersCount > 0 ? <Bar data={orderStatusData} /> : <p>No data available</p>}
           </div>
           <div className={styles["chart"]}>
             <h3>User Roles</h3>

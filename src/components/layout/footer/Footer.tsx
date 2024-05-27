@@ -18,8 +18,8 @@ const Footer = () => {
             <li>
               <Link to="/contact">Contact Us</Link>
             </li>
-            <li>Privacy Policy</li>
-            <li>Terms of Service</li>
+           {/*  <li>Privacy Policy</li>
+            <li>Terms of Service</li> */}
           </ul>
         </div>
         <div className={styles.socialMedia}>

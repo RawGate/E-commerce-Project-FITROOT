@@ -66,17 +66,18 @@ export const fetchUsers = createAsyncThunk(
   }
 )
 
-export const blockUser = createAsyncThunk(
-  "users/blockUser",
-  async ( userId: string ) => {
-    const response = await api.put(`/users/${userId}/block`, {}, {
+export const blockUser = createAsyncThunk("users/blockUser", async (userId: string) => {
+  const response = await api.put(
+    `/users/${userId}/block`,
+    {},
+    {
       headers: {
         Authorization: `Bearer ${getToken()}`
       }
-    })
-      return userId
-  }
-)
+    }
+  )
+  return userId
+})
 
 const userSlice = createSlice({
   name: "users",
@@ -86,14 +87,7 @@ const userSlice = createSlice({
       state.isLoggedIn = false
       state.userData = null
       state.token = null
-      localStorage.setItem(
-        "loginData",
-        JSON.stringify({
-          isLoggedIn: state.isLoggedIn,
-          userData: state.userData,
-          token: state.token
-        })
-      )
+      localStorage.removeItem("loginData")
     }
   },
   extraReducers: (builder) => {
@@ -126,22 +120,16 @@ const userSlice = createSlice({
       )
     })
     builder.addCase(fetchUsers.fulfilled, (state, action) => {
-      console.log(action.payload.data)
       state.users = action.payload.data
       state.isLoading = false
     })
-
     builder.addCase(blockUser.fulfilled, (state, action) => {
-      console.log(action.payload)
-      const foundUser = state.users.find(
-        (users) => users.userId === action.payload
-      )
+      const foundUser = state.users.find((user) => user.userId === action.payload)
       if (foundUser) {
         foundUser.isBlocked = !foundUser.isBlocked
       }
       state.isLoading = false
     })
-
     builder.addMatcher(
       (action) => action.type.endsWith("/pending"),
       (state) => {

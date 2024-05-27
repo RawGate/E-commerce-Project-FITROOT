@@ -137,7 +137,7 @@ const productSlice = createSlice({
         state.isLoading = false
       })
       .addCase(createProduct.fulfilled, (state, action) => {
-        state.products.push(action.payload)
+        state.products.push(action.payload.data)
       })
       .addCase(updateProduct.fulfilled, (state, action) => {
         const updatedProductIndex = state.products.findIndex(

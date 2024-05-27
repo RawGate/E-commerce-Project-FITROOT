@@ -35,7 +35,6 @@
     text-decoration: underline;
 }
 
-
 .dashboard-container {
     display: flex;
 }
@@ -43,4 +42,35 @@
 .main-content {
     flex-grow: 1;
     padding: 20px;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 767px) {
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+}
+
+/* Media Query for Tablets and Desktops */
+@media (min-width: 768px) {
+    .dashboard-container {
+        flex-wrap: wrap;
+    }
+
+    .sidebar {
+        width: 200px;
+        border-right: 1px solid #ddd;
+        border-bottom: none;
+    }
+
+    .main-content {
+        flex-grow: 1;
+        padding: 20px;
+    }
 }

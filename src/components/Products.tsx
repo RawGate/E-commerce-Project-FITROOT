@@ -19,7 +19,8 @@ const Products = () => {
   const [searchTerm, setSearchTerm] = useState("")
   const [sortBy, setSortBy] = useState("")
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000])
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 2000])
+  const [isPriceFilterVisible, setIsPriceFilterVisible] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,11 +61,15 @@ const Products = () => {
   }
 
   const handleCategoryChange = (categoryId: string) => {
-    setSelectedCategories((prevSelected) =>
-      prevSelected.includes(categoryId)
-        ? prevSelected.filter((id) => id !== categoryId)
-        : [...prevSelected, categoryId]
-    )
+    if (categoryId === "all") {
+      setSelectedCategories([])
+    } else {
+      setSelectedCategories((prevSelected) =>
+        prevSelected.includes(categoryId)
+          ? prevSelected.filter((id) => id !== categoryId)
+          : [...prevSelected, categoryId]
+      )
+    }
   }
 
   const handlePriceRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,43 +80,75 @@ const Products = () => {
     })
   }
 
+  const togglePriceFilter = () => {
+    setIsPriceFilterVisible(!isPriceFilterVisible)
+  }
+
   return (
     <div className="product-page-container">
       <aside className="sidebar">
         <div className="filter-category">
           <h2>Choose category</h2>
+          <div className="category all-categories">
+            <span
+              className={`category ${selectedCategories.length === 0 ? "selected" : ""}`}
+              onClick={() => handleCategoryChange("all")}
+            >
+              All Categories
+            </span>
+          </div>
           {categories &&
             categories.length > 0 &&
             categories.map((category) => (
-              <div key={category.categoryId}>
-                <label>
-                  <input
-                    type="checkbox"
-                    value={category.categoryId}
-                    checked={selectedCategories.includes(category.categoryId)}
-                    onChange={() => handleCategoryChange(category.categoryId)}
-                  />
+              <div key={category.categoryId} className="category">
+                <span
+                  className={`category ${
+                    selectedCategories.includes(category.categoryId) ? "selected" : ""
+                  }`}
+                  onClick={() => handleCategoryChange(category.categoryId)}
+                >
                   {category.name}
-                </label>
+                </span>
               </div>
             ))}
         </div>
         <div className="filter-price">
-          <h2>Filter By Price</h2>
-          <div className="price-range">
-            <label>
-              Min Price: {priceRange[0]}
+          <h2 onClick={togglePriceFilter} style={{ cursor: "pointer" }}>
+            Filter By Price
+          </h2>
+          {isPriceFilterVisible && (
+            <div className="price-range">
+              <p>use slider or enter min and max price</p>
+              <label>
+                Min Price:
+                <input
+                  type="number"
+                  name="min"
+                  min="0"
+                  max="2000"
+                  value={priceRange[0]}
+                  onChange={handlePriceRangeChange}
+                />
+              </label>
+              <label>
+                Max Price:
+                <input
+                  type="number"
+                  name="max"
+                  min="0"
+                  max="2000"
+                  value={priceRange[1]}
+                  onChange={handlePriceRangeChange}
+                />
+              </label>
               <input
                 type="range"
                 name="min"
                 min="0"
-                max="1000"
+                max="2000"
                 value={priceRange[0]}
                 onChange={handlePriceRangeChange}
               />
-            </label>
-            <label>
-              Max Price: {priceRange[1]}
               <input
                 type="range"
                 name="max"
@@ -120,8 +157,8 @@ const Products = () => {
                 value={priceRange[1]}
                 onChange={handlePriceRangeChange}
               />
-            </label>
-          </div>
+            </div>
+          )}
         </div>
       </aside>
       <div className="product-list-container">
@@ -136,7 +173,7 @@ const Products = () => {
           <div>
             <select onChange={handleSortChange}>
               <option value="">Select Sorting</option>
-              <option value="name">Name</option>
+              <option value="name">A-Z</option>
               <option value="price">Price</option>
             </select>
           </div>

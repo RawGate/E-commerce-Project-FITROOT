@@ -26,7 +26,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
+    /* Change to row for left-right alignment */
     padding: 20px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     font-family: "Sedan SC", serif;
@@ -55,6 +56,8 @@
     z-index: 2;
     text-align: center;
     color: #333;
+    margin-left: 20px;
+    /* Add some space between image and text */
 }
 
 h2,
@@ -87,12 +90,13 @@ p {
     transform: scale(1.05);
 }
 
-
 @media (max-width: 480px) {
     .productDetails__container {
         width: 90%;
         height: auto;
         padding: 10px;
+        flex-direction: column;
+        /* Change to column for small screens */
     }
 
     .productDetails__img {
@@ -110,12 +114,13 @@ p {
     }
 }
 
-
 @media (min-width: 481px) and (max-width: 767px) {
     .productDetails__container {
         width: 80%;
         height: auto;
         padding: 15px;
+        flex-direction: column;
+        /* Change to column for medium screens */
     }
 
     .productDetails__img {
@@ -132,7 +137,6 @@ p {
         padding: 9px 18px;
     }
 }
-
 
 @media (min-width: 768px) and (max-width: 1024px) {
     .productDetails__container {
@@ -155,7 +159,6 @@ p {
         padding: 10px 20px;
     }
 }
-
 
 @media (min-width: 1025px) and (max-width: 1280px) {
     .productDetails__container {

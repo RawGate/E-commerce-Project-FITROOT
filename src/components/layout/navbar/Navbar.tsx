@@ -67,13 +67,13 @@ const Navbar = () => {
               {userData?.role === "admin" ? (
                 <li>
                   <Link to="/dashboard/admin" className={styles.navLink} onClick={toggleMenu}>
-                    Admin Dashboard
+                   Dashboard
                   </Link>
                 </li>
               ) : (
                 <li>
                   <Link to="/dashboard/user" className={styles.navLink} onClick={toggleMenu}>
-                    User Dashboard
+                    Profile
                   </Link>
                 </li>
               )}

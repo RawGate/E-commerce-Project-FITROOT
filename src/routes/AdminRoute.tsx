@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom"
 
 const AdminRoute = () => {
   const { isLoggedIn, userData } = useSelector((state: RootState) => state.userR)
-  return isLoggedIn && userData ?.role =='admin'? <Outlet /> : <Login />
+  return isLoggedIn && userData?.role === "admin" ? <Outlet /> : <Login />
 }
 
-export default AdminRoute 
+export default AdminRoute

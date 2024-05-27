@@ -1,6 +1,5 @@
 import React from "react"
 
-
 interface OrderConfirmationModalProps {
   onClose: () => void
 }

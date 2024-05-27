@@ -143,8 +143,8 @@ export const ProductsManagement = () => {
         categoryId: productCategoryId
       }
       await dispatch(
-        updateProduct({ updateProductData: updatedProductData, productId: selectedProductId })
-      )
+        updateProduct({ updateProductData: updatedProductData, productId: selectedProductId }) 
+      ) 
       setIsEdit(false)
       reset() 
       setImagePreview(null)
@@ -224,6 +224,7 @@ export const ProductsManagement = () => {
                       control={control}
                       render={({ field }) => (
                         <select {...field}>
+                          <option value="">Select Category</option>
                           {categories.map((category) => (
                             <option key={category.categoryId} value={category.categoryId}>
                               {category.name}
@@ -307,6 +308,7 @@ export const ProductsManagement = () => {
                     control={control}
                     render={({ field }) => (
                       <select {...field}>
+                        <option value="">Select Category</option>
                         {categories.map((category) => (
                           <option key={category.categoryId} value={category.categoryId}>
                             {category.name}

@@ -9,7 +9,7 @@ const AdminSidebar = () => {
   return (
     <aside className={styles.sidebar}>
       <div>
-        <h2>Profile</h2>
+        <h2>Admin</h2>
         <p>{userData?.name}</p>
         <p>{userData?.email}</p>
       </div>

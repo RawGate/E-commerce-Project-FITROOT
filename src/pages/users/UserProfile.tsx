@@ -86,8 +86,8 @@ export const UserProfile: React.FC = () => {
                       {...register("phone", {
                         required: "Phone number is required",
                         pattern: {
-                          value: /^\d{10,}$/,
-                          message: "Phone number must be at least 10 digits"
+                          value: /^\d{9,}$/,
+                          message: "Phone number must be at least 9 digits"
                         }
                       })}
                     />

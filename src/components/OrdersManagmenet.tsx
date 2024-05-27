@@ -6,7 +6,7 @@ import { deleteOrder, fetchOrders, updateOrderStatus } from "@/tookit/slices/Ord
 import useOrderState from "@/hooks/useOrderState"
 import AdminSidebar from "./layout/sidebars/AdminSidebar"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faTrash, faShippingFast } from "@fortawesome/free-solid-svg-icons"
+import { faTrash, faShippingFast, faCheckCircle } from "@fortawesome/free-solid-svg-icons"
 
 export const OrdersManagement = () => {
   const { orders, isLoading, error } = useOrderState()
@@ -50,7 +50,6 @@ export const OrdersManagement = () => {
 
   const handleUpdateStatus = async (orderId: string, status: string) => {
     try {
-      
       await dispatch(updateOrderStatus({ orderId, status }))
     } catch (error) {
       console.error("Failed to update order status:", error)
@@ -102,9 +101,15 @@ export const OrdersManagement = () => {
                     </button>
                     <button
                       onClick={() => handleUpdateStatus(order.orderId, "shipped")}
-                      className="order-update-button"
+                      className="order-update-button shipped"
                     >
                       <FontAwesomeIcon icon={faShippingFast} />
+                    </button>
+                    <button
+                      onClick={() => handleUpdateStatus(order.orderId, "delivered")}
+                      className="order-update-button"
+                    >
+                      <FontAwesomeIcon icon={faCheckCircle} />
                     </button>
                   </td>
                 </tr>
