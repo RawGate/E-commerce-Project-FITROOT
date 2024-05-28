@@ -6,3 +6,5 @@
   from = "/*"
   to = "/"
   status = 200
+  force = false 
+  conditions = {Header = {"Accept", "text/html"}}
