@@ -251,6 +251,24 @@
         border-bottom: 1px solid #ddd;
     }
 
+    .formContainer {
+        padding: 10px;
+    }
+    .updateForm {
+       width: 100%;
+     }
+
+     .formGroup label {
+         margin-bottom: 8px;
+                     
+       }
+        
+         .formGroup input,
+         .formGroup textarea {
+         width: 100%;
+               
+     }
+
     .dashboard-container {
         flex-direction: column;
     }

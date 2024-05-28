@@ -208,7 +208,7 @@ setIsModalOpen(true)
         </>
       ) : (
         <div className={styles.no_items}>
-          <img src="/public/img/noitems.png" alt="no items" className={styles.cart_noitems_img} />
+          <img src="./img/noitems.png" alt="no items" className={styles.cart_noitems_img} />
           <p>No items in the cart</p>
         </div>
       )}
