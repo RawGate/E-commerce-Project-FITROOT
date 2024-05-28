@@ -97,7 +97,7 @@ const handlePlaceOrder = async () => {
     }, 1000)
 setIsModalOpen(true)
     dispatch(removeAllFromCart()) 
-    navigate("/dashboard/user/profile")
+    navigate("/dashboard/user")
   } catch (error) {
     console.error("Failed to place order:", error)
     alert("Failed to place order.")
