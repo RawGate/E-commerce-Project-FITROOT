@@ -52,7 +52,7 @@ export const AdminDashboard: React.FC = () => {
   console.log("Fetched Users:", users)
   console.log("Fetched Products:", products)
 
-  const orderStatusData = {
+   const orderStatusData = {
     labels: ["Pending", "Shipped", "Delivered"],
    datasets: [{
     
@@ -66,9 +66,7 @@ export const AdminDashboard: React.FC = () => {
         backgroundColor: ["#ff6384", "#36a2eb", "#cc65fe", "#ffce56"]
       }
     ]
-  }
-
-  console.log("Order Status Data:", orderStatusData)
+  } 
 
   const userRoleData = {
     labels: ["Admin", "Customer"],
@@ -120,13 +118,13 @@ export const AdminDashboard: React.FC = () => {
           </div>
           <div className={styles["summary-item"]}>
             <h3>Orders</h3>
-            <p>{ordersCount}</p>
+             <p>{ordersCount}</p> 
           </div>
         </div>
         <div className={styles["charts"]}>
           <div className={styles["chart"]}>
             <h3>Order Status</h3>
-            {ordersCount > 0 ? <Bar data={orderStatusData} /> : <p>No data available</p>}
+            {ordersCount > 0 ? <Bar data={orderStatusData} /> : <p>No data available</p>} 
           </div>
           <div className={styles["chart"]}>
             <h3>User Roles</h3>

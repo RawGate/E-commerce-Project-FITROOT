@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const isDevelopment = import.meta.env.MODE === 'development'
-let baseURL = 'http://localhost:5110/api'
+let baseURL = "https://backend-ecommerce-project-service.onrender.com/api"
 
 if (!isDevelopment) {
   baseURL = 'http://localhost:5110/api/v1'
