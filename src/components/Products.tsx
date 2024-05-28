@@ -20,7 +20,6 @@ const Products = () => {
   const [sortBy, setSortBy] = useState("")
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 2000])
-  const [isPriceFilterVisible, setIsPriceFilterVisible] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -80,10 +79,6 @@ const Products = () => {
     })
   }
 
-  const togglePriceFilter = () => {
-    setIsPriceFilterVisible(!isPriceFilterVisible)
-  }
-
   return (
     <div className="product-page-container">
       <aside className="sidebar">
@@ -113,52 +108,48 @@ const Products = () => {
             ))}
         </div>
         <div className="filter-price">
-          <h2 onClick={togglePriceFilter} style={{ cursor: "pointer" }}>
-            Filter By Price
-          </h2>
-          {isPriceFilterVisible && (
-            <div className="price-range">
-              <p>use slider or enter min and max price</p>
-              <label>
-                Min Price:
-                <input
-                  type="number"
-                  name="min"
-                  min="0"
-                  max="2000"
-                  value={priceRange[0]}
-                  onChange={handlePriceRangeChange}
-                />
-              </label>
-              <label>
-                Max Price:
-                <input
-                  type="number"
-                  name="max"
-                  min="0"
-                  max="2000"
-                  value={priceRange[1]}
-                  onChange={handlePriceRangeChange}
-                />
-              </label>
+          <h2>Filter By Price</h2>
+          <div className="price-range">
+            <p>Use slider or enter min and max price</p>
+            <label>
+              Min Price:
               <input
-                type="range"
+                type="number"
                 name="min"
                 min="0"
                 max="2000"
                 value={priceRange[0]}
                 onChange={handlePriceRangeChange}
               />
+            </label>
+            <label>
+              Max Price:
               <input
-                type="range"
+                type="number"
                 name="max"
                 min="0"
                 max="2000"
                 value={priceRange[1]}
                 onChange={handlePriceRangeChange}
               />
-            </div>
-          )}
+            </label>
+            <input
+              type="range"
+              name="min"
+              min="0"
+              max="2000"
+              value={priceRange[0]}
+              onChange={handlePriceRangeChange}
+            />
+            <input
+              type="range"
+              name="max"
+              min="0"
+              max="2000"
+              value={priceRange[1]}
+              onChange={handlePriceRangeChange}
+            />
+          </div>
         </div>
       </aside>
       <div className="product-list-container">

@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap');
 
 .footer {
-    background-color: #000;
-    color: white;
+    background-color: #F5F5F5;
+    color: rgb(23, 3, 3);
     text-align: center;
     padding: 20px;
     font-family: "Sedan SC", serif;
@@ -15,12 +15,13 @@
 }
 
 .links {
-    color: lightgray;
+    color: rgb(12, 0, 0);
     text-decoration: none;
 }
 
-.links h3 {
-    color: #FFEC9E;
+.footer .links h3 {
+    color: #000;
+
     text-decoration: none;
 }
 .links ul {
@@ -51,13 +52,13 @@
 
 .links li:hover {
     transform: scale(1.2);
-    color: white;
+    color: #FFD700;
 }
 
 .links li,
 .socialMedia a {
     margin: 5px 0;
-    color: lightgray;
+    color: rgb(15, 1, 1);
 }
 
 .links h3 {
@@ -70,10 +71,10 @@
 }
 
 .socialMedia h3 {
-    color: #FFEC9E;
+    color: #171303;
 }
 .socialMedia a:hover {
-    color: white;
+    color: #FFD700;
     
 }
 
@@ -97,7 +98,7 @@
 }
 
 .newsletter p {
-    color: #fff;
+    color: #010000;
 }
 
 .newsletter button {
@@ -126,7 +127,7 @@
 }
 
 .newsletter h3 {
-    color: #FFEC9E;
+    color: #060500;
     text-align: center;
 }
 .copyRight {
@@ -135,7 +136,7 @@
 }
 
 .copyRight p{
-    color: #fff;
+    color: #0b0000;
 }
 
 @media (max-width: 480px) {
