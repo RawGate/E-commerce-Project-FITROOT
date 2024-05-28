@@ -371,7 +371,7 @@ export const ProductsManagement = () => {
                       />
                     </td>
                     <td>{product.name}</td>
-                    <td>{product.categoryId ? product.category.name : "No Category"}</td>
+                    <td>{product.category ? product.category.name : "No Category"}</td>
                     <td>{product.description}</td>
                     <td>${product.price}</td>
                     <td>{product.stock}</td>
