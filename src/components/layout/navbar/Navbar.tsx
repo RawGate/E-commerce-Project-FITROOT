@@ -29,7 +29,7 @@ const Navbar = () => {
         <CartIcon value={cartItems && cartItems.length > 0 ? cartItems.length : 0} />
       </Link>
       <div className={styles.logo}>
-        <img src="/public/img/logo.png" alt="Logo" />
+        <img src="./img/logo.png" alt="Logo" />
       </div>
       <div className={styles.menuContainer}>
         <input

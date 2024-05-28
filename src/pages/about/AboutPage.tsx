@@ -19,7 +19,7 @@ export const AboutUs = () => {
           </p>
         </div>
         <div className={styles.imgContainer}>
-          <img src="/public/img/aboutus.png" alt="Our Story" className={styles.mainImg} />
+          <img src="/img/aboutus.png" alt="Our Story" className={styles.mainImg} />
         </div>
       </section>
       <section className={styles.responsiveContainerBlock}>
@@ -27,7 +27,7 @@ export const AboutUs = () => {
           <h2 className={`${styles.textBlk} ${styles.heading}`}>Services Offered by FITROOT</h2>
           <div className={styles.service}>
             <div className={styles.cardImgContainer}>
-              <img src="/public/img/gym.png" alt="Gym Equipment" className={styles.cardImg} />
+              <img src="/img/gym.png" alt="Gym Equipment" className={styles.cardImg} />
             </div>
             <h3 className={`${styles.textBlk} ${styles.cardHeading}`}>Gym Equipment</h3>
             <p className={`${styles.textBlk} ${styles.cardSubHeading}`}>
@@ -36,7 +36,7 @@ export const AboutUs = () => {
           </div>
           <div className={styles.service}>
             <div className={styles.cardImgContainer}>
-              <img src="/public/img/yoga.png" alt="Yoga Accessories" className={styles.cardImg} />
+              <img src="/img/yoga.png" alt="Yoga Accessories" className={styles.cardImg} />
             </div>
             <h3 className={`${styles.textBlk} ${styles.cardHeading}`}>Yoga Accessories</h3>
             <p className={`${styles.textBlk} ${styles.cardSubHeading}`}>
@@ -47,7 +47,7 @@ export const AboutUs = () => {
           <div className={styles.service}>
             <div className={styles.cardImgContainer}>
               <img
-                src="/public/img/supp.png"
+                src="/img/supp.png"
                 alt="Nutritional Supplements"
                 className={styles.cardImg}
               />
@@ -60,7 +60,7 @@ export const AboutUs = () => {
           <div className={styles.service}>
             <div className={styles.cardImgContainer}>
               <img
-                src="/public/img/service.png"
+                src="/img/service.png"
                 alt="Personalized Service"
                 className={styles.cardImg}
               />
@@ -74,7 +74,7 @@ export const AboutUs = () => {
           <div className={styles.service}>
             <div className={styles.cardImgContainer}>
               <img
-                src="/public/img/after-sales.png"
+                src="/img/after-sales.png"
                 alt="After-Sales Support"
                 className={styles.cardImg}
               />
