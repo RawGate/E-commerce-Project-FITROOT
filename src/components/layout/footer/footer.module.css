@@ -52,7 +52,7 @@
 
 .links li:hover {
     transform: scale(1.2);
-    color: #FFD700;
+    color: #817545;
 }
 
 .links li,
@@ -74,7 +74,7 @@
     color: #171303;
 }
 .socialMedia a:hover {
-    color: #FFD700;
+    color: #817545;
     
 }
 

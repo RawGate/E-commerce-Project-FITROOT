@@ -8,7 +8,6 @@ import { LoginFormData } from "@/types"
 import styles from "./login.module.css"
 import { useNavigate } from "react-router-dom"
 
-
 export const Login = () => {
   const dispatch: AppDispatch = useDispatch()
   const navigate = useNavigate()
@@ -26,7 +25,7 @@ export const Login = () => {
 
       if (response && response.data && response.data.user && response.data.user.role) {
         const isAdmin = response.data.user.role === "admin"
-        navigate(isAdmin ? "/dashboard/admin" : "/dashboard/user")
+        navigate(isAdmin ? "/dashboard/admin/categories" : "/dashboard/user")
         setSuccessMessage("Login successful")
         setErrorMessage("")
       } else {
